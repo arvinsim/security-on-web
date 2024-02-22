@@ -1,3 +1,5 @@
+import { Person } from "./_components/Person";
+
 function PersonList() {
   const persons = [
     { id: 1, name: "John" },
@@ -8,7 +10,9 @@ function PersonList() {
   return (
     <ul>
       {persons.map((person) => (
-        <li key={person.id}>{person.name}</li>
+        <li key={person.id}>
+          <Person person={person} />
+        </li>
       ))}
     </ul>
   );
