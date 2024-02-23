@@ -1,11 +1,15 @@
 import { Person } from "./_components/Person";
 
-function PersonList() {
-  const persons = [
-    { id: 1, name: "John" },
-    { id: 2, name: "Doe" },
-    { id: 3, name: "Smith" },
-  ];
+async function getPersons(): Promise<any[]> {
+  const response = await fetch("http://localhost:9999/api/persons", {
+    method: "GET",
+  });
+  const responseJson = await response.json();
+  return responseJson.data.persons;
+}
+
+async function PersonList() {
+  const persons = await getPersons();
 
   return (
     <ul>
