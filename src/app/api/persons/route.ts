@@ -1,10 +1,15 @@
-import { randFullName } from "@ngneat/falso";
+import sql from "../../../db";
 
-export function GET() {
-  const persons = [
-    { id: 1, name: randFullName() },
-    { id: 2, name: randFullName() },
-    { id: 3, name: randFullName() },
-  ];
+export const dynamic = "force-dynamic";
+
+export async function GET() {
+  const persons = await sql`
+    SELECT
+      id,
+      first_name,
+      last_name
+      email
+    FROM persons
+  `;
   return Response.json({ persons });
 }

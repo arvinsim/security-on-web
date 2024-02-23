@@ -5,11 +5,14 @@ async function getPersons(): Promise<any[]> {
     method: "GET",
   });
   const responseJson = await response.json();
+  console.log("responseJson", responseJson);
   return responseJson.data.persons;
 }
 
 async function PersonList() {
   const persons = await getPersons();
+
+  console.log("persons", persons);
 
   return (
     <ul>
